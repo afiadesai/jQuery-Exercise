@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link href="D:\html\bootstrap\css\bootstrap.css" rel="stylesheet"/>
+        <link href="D:\html\bootstrap\css\bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="./jsonex.css" rel="stylesheet">
+        <style>
+        
+        
+        </style>
+        
+         <script>
+           $.ajax({
+            url: "https://reqres.in/api/users?page=1",
+            data: {},
+            beforeSend: function(){}
+        }).done(function(response) {
+            var trArr = new Array();
+            $.each(response.data, function(i, v){
+                trArr.push('<tr><td>' + v.first_name  + '</td><td>' + v.email + '</td><td><img id="img" src="' 
+                + v.avatar + '" width="100px" /></td><td> <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i> <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></a>' + '</td></tr>'  );
+                
+            });
+            $('table#alk-table tbody').append(trArr.join('\n'));
+        });
+        </script>
+    
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="rowspan">
+                        <div class="colspan"><h2>User <b>Lists</b></h2></div>
+                        <div class="colspan">
+                          
+                        <a class="btn btn-info pull-right" href="UserList.html"> Add new <span class="icon-plus"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <table id="alk-table" class="table table-bordered" >
+                        <thead><tr><th>Name</th><th>Email_address</th><th>Avatar</th><th>Actions</th></tr></thead>
+                        <tbody></tbody>
+                </table>
+            </div>     
+        </div>
+    </body>
+</html>

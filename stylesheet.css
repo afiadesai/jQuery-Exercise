@@ -1,0 +1,31 @@
+.a{
+    padding: 30px;
+    border:10px solid Gray;
+}
+table,th,td,tr{
+    border: 3px solid black;
+    padding: 7px;
+    width: 30pc;
+}
+.b{
+    border: 10px solid black;
+    background-color:rgb(138, 201, 201);
+    border-block-end-style: solid;
+    border-radius: 10px;
+}
+.float-right{
+   text-align:right;
+   
+    
+}
+#email,#lname,#fname{
+    width: 400px;
+}
+position: relative;
+	width: 100%;
+	height: 50px;
+	background: transparent;
+	border: none;
+    outline: none;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0,0,0,.5);

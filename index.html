@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>Userlist Webpage</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <link href="D:\project\html\assignment\first\bootstrap\css\bottstrap-responsive.css" rel="stylesheet"/>
+        <link href="D:\project\html\assignment\first\bootstrap\css\bootstrap.css" rel="stylesheet"/>
+        <link href="D:\project\html\assessment\stylesheet.css" rel="stylesheet" type="text/css"/>
+        <script src="mainsjs.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+        <link href="./jsonex.css" rel="stylesheet">
+    </head>
+    <script language="JavaScript">
+        $(document).ready(function(){
+            btnclick(1);
+        });
+        function btnclick(btnum){
+               $("tbody").children().remove();
+        
+             $.ajax({
+            url: "https://reqres.in/api/users?page="+btnum,
+            data: {},
+            beforeSend: function(){}
+        }).done(function(response) {
+            var trArr = new Array();
+            $.each(response.data, function(i, v){
+                trArr.push('<tr><td>' + v.first_name  + '</td><td>' + v.email + '</td><td><img id="img" src="' 
+                + v.avatar + '" width="100px" /></td><td> <a class="edit" title="Edit"  href="main.html" data-toggle="tooltip"><i class="material-icons">&#xE254;</i> <a class="delete" data-target="#myModal" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></a>' + '</td></tr>'  );
+                
+            });
+            
+            $('table#tablebody').append(trArr.join('\n'));
+            
+        });
+   }
+    
+		
+    
+
+      
+    </script>
+    <body>
+        <p id="demo"></p>
+        <div class="container">
+            <div class="a">
+                <p>
+                    <h1 style="color:black; font-display:sans serif" >User List</h1>
+                   
+                    
+                        
+                        <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-primary">+Add User</button>
+                      
+                        <div id="id01" class="w3-modal">
+                          <div class="w3-modal-content  w3-animate-zoom">
+                            <div class="w3-container">
+                              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                              <div>
+                              <article class="">
+                                <p><h1 align="center">User Details</h1></p>
+                                <p>
+                                    <form  id="abc" method="POST" action="mainjs.js">
+                                   <p> <label for="fname">First Name</label>
+                                    <input type="text" id="fname" class ="form-control" required/>
+                                </p>
+                                    <p><label for="lname">Last Name</label>
+                                    <input type="text" id="lname" class="form-control form horizontal" required/>
+                                </p>
+                                <p ><label for="email" >Email</label>
+                                    <input type="email" id="email" style="margin-left: 40px" class="form-control"required/><br/>
+                                </p>    
+                                    <div style="text-align: center">
+                                        <button class="btn btn-primary" id="buttons" onclick=func()>Submit
+                                        </button>
+                                    </div>
+                                </div>
+                                </form>
+                                </p>
+                            </article>
+                            </div>
+                          </div>
+                        </div>
+                      
+                    
+                </p>
+                <table id="tablebody" class="table">
+                  <thead>  <tr><th>Name</th><th>Email Address</th><th>Avatar</th><th>Actions</th></tr></thead>
+                    
+                </table>
+                
+                <ul class="pagination">
+                        <li><a href="#">Previous</a></li>
+                        <li><a href="#" onclick=btnclick(1)>1</a></li>
+                        <li><a href="#" onclick=btnclick(2)>2</a></li>
+                        <li><a href="#" onclick=btnclick(3)>3</a></li>
+                        <li><a href="#" onclick=btnclick(4)>4</a></li>
+                        <li><a href="#" onclick=btnclick(5)>5</a></li>
+                        <li><a href="#">Next</a></li>
+                      </ul>
+            </div>
+        </div>
+       <script>
+           
+       </script>
+        
+       
+    </body>
+</html>
